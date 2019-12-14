@@ -1,3 +1,8 @@
+/*
+to find the number of occurrences of number 4 in a number
+*/
+
+
 #include <iostream>
 using namespace std;
 
