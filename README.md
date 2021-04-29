@@ -1,2 +1,2 @@
-# practice-codechef-beginner
-It contains the interesting beginner codechef programs that I have performed.
+Important Competitve Questions and DataStructures and Algorithms.
+
