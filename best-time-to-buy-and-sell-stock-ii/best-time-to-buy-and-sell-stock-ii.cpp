@@ -7,7 +7,7 @@ public:
         for(int &price : prices) {
             T_ik0_old = T_ik0;
             T_ik0 = max(T_ik0, T_ik1 + price);
-            T_ik1 = max(T_ik1, T_ik0 - price);
+            T_ik1 = max(T_ik1, T_ik0_old - price);
         }
         
         return T_ik0;
