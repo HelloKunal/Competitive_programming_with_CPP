@@ -1,3 +1,4 @@
+[Discussion Post (created on 10/8/2021 at 13:3)](https://leetcode.com/problems/coin-change/discuss/1455147/EASY-TO-UNDERSTAND-or-C%2B%2B-or-DYNAMIC-PROGRAMMING)  
 <h2>322. Coin Change</h2><h3>Medium</h3><hr><div><p>You are given an integer array <code>coins</code> representing coins of different denominations and an integer <code>amount</code> representing a total amount of money.</p>
 
 <p>Return <em>the fewest number of coins that you need to make up that amount</em>. If that amount of money cannot be made up by any combination of the coins, return <code>-1</code>.</p>
