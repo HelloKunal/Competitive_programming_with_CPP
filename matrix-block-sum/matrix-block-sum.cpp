@@ -1,32 +1,29 @@
 class Solution {
 public:
     vector<vector<int>> matrixBlockSum(vector<vector<int>>& mat, int k) {
-        int xAxis = mat[0].size();
         int yAxis = mat.size();
-        vector<vector<int>> pSum(yAxis, vector<int> (xAxis, 0));
-        for(int y = 0; y < yAxis; y++) {
-            pSum[y][0] = mat[y][0];
-            for(int x = 1; x < xAxis; x++) {
-                pSum[y][x] = pSum[y][x-1] + mat[y][x];
+        int xAxis = mat[0].size();
+        
+        vector<vector<int>> dp(yAxis+1, vector<int> (xAxis+1, 0));
+        for(int y = 1; y <= yAxis; y++) {
+            for(int x = 1; x <= xAxis; x++) {
+                dp[y][x] = dp[y-1][x] + dp[y][x-1] - dp[y-1][x-1] + mat[y-1][x-1];
             }
         }
         
+        vector<vector<int>> res(yAxis, vector<int> (xAxis));
         for(int y = 0; y < yAxis; y++) {
             for(int x = 0; x < xAxis; x++) {
                 
-                int nx2 = min(xAxis-1, x+k);
-                int nx1 = x-k-1;
-                int sum = 0;
-                for(int ny = y - k; ny <= y + k; ny++) {
-                    if(ny < 0 || ny > yAxis-1) continue;
-                    if(nx1 < 0) sum += pSum[ny][nx2];
-                    else sum += pSum[ny][nx2] - pSum[ny][nx1];                        
-                }              
+                int top = max(0, y-k);
+                int bottom = min(yAxis-1, y+k);
+                int left = max(0, x-k);
+                int right = min(xAxis-1, x+k);
                 
-                mat[y][x] = sum;
+                res[y][x] = dp[bottom+1][right+1] - dp[bottom+1][left] - dp[top][right+1] + dp[top][left];
             }
         }
         
-        return mat;
+        return res;
     }
 };
