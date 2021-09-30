@@ -1,16 +1,12 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int size_p = prices.size();
-        vector<int> maxArray(size_p);
-        maxArray[size_p-1] = prices[size_p-1];
-        for(int i = size_p-2; i >= 0; i--) {
-            maxArray[i] = max(prices[i], maxArray[i+1]);
+        int T_100 = 0, T_101 = INT_MAX;
+        for(int price : prices) {
+            T_100 = max(T_100, price - T_101);
+            T_101 = min(T_101, price);
         }
-        int sum = 0;
-        for(int i = 0; i < size_p; i++) {
-            sum = max(maxArray[i]-prices[i], sum);
-        }
-        return sum;
+        
+        return T_100;
     }
 };
